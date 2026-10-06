@@ -8,7 +8,7 @@ Buka `index.html` di browser, atau gunakan ekstensi Live Server di VS Code bila 
 
 ## Deploy GitHub Pages
 
-Repository ini dapat diterbitkan di `https://fadlifirmansyah1945-alt.github.io/porto/`. Workflow `.github/workflows/pages.yml` akan deploy otomatis setiap kali ada push ke branch `main`.
+Repository ini dapat diterbitkan di `https://fadlifirmansyah1945-alt.github.io/porto/`. Workflow `.github/workflows/pages.yml` akan menerbitkan berkas ke branch `gh-pages` setiap kali ada push ke branch `main`. Untuk aktivasi pertama, buka **Settings → Pages**, pilih **Deploy from a branch**, lalu pilih branch `gh-pages` dan folder `/(root)`.
 
 Untuk login Supabase di situs live, tambahkan `https://fadlifirmansyah1945-alt.github.io/porto/` sebagai Site URL dan `https://fadlifirmansyah1945-alt.github.io/porto/**` sebagai Redirect URL di Authentication → URL Configuration. `supabase-config.js` berisi URL proyek dan anon/public key yang memang dipakai frontend; jangan pernah memasukkan `service_role` key.
 
