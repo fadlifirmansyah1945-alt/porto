@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10233d">
+    <title>Masuk — myprtflioo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js" defer></script>
+    <script src="login.js" defer></script>
+  </head>
+  <body class="auth-page">
+    <header class="auth-header">
+      <a class="wordmark" href="index.html" aria-label="myprtflioo, kembali ke portfolio">myprtflioo<span>.</span></a>
+      <a href="index.html">Kembali ke portfolio ↗</a>
+    </header>
+    <main class="auth-main">
+      <section class="auth-intro">
+        <p class="eyebrow"><span class="live-dot"></span> RUANG KARYA PRIBADI</p>
+        <h1>Masuk ke<br>ruang <em>karyamu.</em></h1>
+        <p>Kelola album, karya, dan profil dalam satu tempat.</p>
+      </section>
+      <form class="auth-form" id="auth-form">
+        <p class="eyebrow" id="auth-form-label">AKUN</p>
+        <h2 id="auth-heading">Masuk</h2>
+        <p class="auth-status" id="auth-status" role="status" aria-live="polite">Masuk untuk membuka portfolio akunmu.</p>
+        <label>Email<input name="email" type="email" autocomplete="email" required></label>
+        <label>Kata sandi<input name="password" type="password" autocomplete="current-password" minlength="8" required></label>
+        <div class="auth-actions">
+          <button class="solid-button" id="auth-submit" type="submit">Masuk</button>
+          <button class="text-button" id="auth-mode-toggle" type="button">Belum punya akun? Buat akun</button>
+        </div>
+        <a class="auth-home-link" href="index.html">Kembali tanpa masuk</a>
+      </form>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f3ed">
+    <meta name="description" content="Portfolio dan galeri karya Muhamad Fadli Firmansyah, siswa Desain Komunikasi Visual di SMKN 1 Kota Serang.">
+    <title>Muhamad Fadli Firmansyah — Portfolio & Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#home" aria-label="My portfolio, kembali ke beranda">myprtflioo<span>.</span></a>
+      <span class="header-note">PORTFOLIO & GALLERY <span>·</span> 2026</span>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Buka navigasi"><span></span><span></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+        <a href="#home">Home</a><a href="#portfolio">Portfolio</a><a href="#albums">Albums</a><a href="#creators">Kreator</a><a href="#about">About</a><a href="#contact">Contact</a>
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Aktifkan tema terang" title="Ganti tema">◐</button>
+        <button class="nav-admin" id="open-account" type="button"><span id="account-nav-label">Akun</span> <span aria-hidden="true">↗</span></button>
+        <button class="nav-admin" id="open-dashboard" type="button" data-owner-only hidden>Kelola <span aria-hidden="true">↗</span></button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero wrap" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="live-dot"></span> RUANG KARYA FADLI · DIPERBARUI 2026</p>
+          <h1>Gagasan yang<br>menjadi <em>sesuatu.</em></h1>
+          <div class="hero-bottom">
+            <p>Halo, saya Muhamad Fadli Firmansyah, siswa DKV di SMKN 1 Kota Serang. Ini ruang untuk menyimpan dan membagikan karya serta proses belajar saya.</p>
+            <div class="hero-actions"><a class="text-link" href="#portfolio">Lihat portfolio <span>↘</span></a><a class="round-link" href="#albums" aria-label="Lihat albums">↓</a></div>
+          </div>
+          <div class="hero-stats"><span><strong id="hero-work-count">00</strong> KARYA</span><span><strong id="hero-album-count">00</strong> ALBUM</span></div>
+        </div>
+        <div class="hero-visual">
+          <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1400&q=85" alt="Arsitektur modern dengan permainan bentuk dan bayangan" fetchpriority="high">
+          <div class="hero-stamp"><span>IDE<br>MENJADI<br><i>RASA</i></span><b aria-hidden="true">✳</b></div>
+          <span class="visual-caption">ARSIP VISUAL NO. 001</span>
+          <span class="visual-index">FI / 26</span>
+        </div>
+        <span class="hero-side-note" aria-hidden="true">MENGAMATI · MEMBUAT · MENGULANG</span>
+      </section>
+
+      <section class="portfolio-section" id="portfolio">
+        <div class="wrap">
+          <div class="section-heading">
+            <div><p class="eyebrow">01 — PORTFOLIO</p><h2>Catatan dalam<br><em>bentuk visual.</em></h2></div>
+            <p class="section-aside">Pilihan karya, eksperimen,<br>dan proses yang saya simpan.</p>
+          </div>
+          <div class="gallery-tools">
+            <label class="search-field"><span aria-hidden="true">⌕</span><input id="work-search" type="search" placeholder="Cari karya, album, kategori, tahun..." aria-label="Cari karya"></label>
+            <label class="sort-field">URUTKAN <select id="work-sort" aria-label="Urutkan karya"><option value="newest">Terbaru</option><option value="oldest">Terlama</option><option value="title">Judul A–Z</option><option value="album">Album A–Z</option></select></label>
+            <button class="outline-button" type="button" data-action="add-work" data-owner-only hidden>+ Tambah karya</button>
+          </div>
+          <div class="filter-bar"><span class="work-count"><b id="visible-count">00</b> KARYA</span><div id="category-filters" class="filter-list" role="group" aria-label="Filter kategori karya"></div></div>
+          <div class="album-crumb" id="album-crumb" hidden></div>
+          <div class="work-grid" id="work-grid" aria-live="polite"></div>
+          <p class="empty-state" id="work-empty" hidden>Belum ada karya yang cocok. Coba kata kunci atau filter lain.</p>
+        </div>
+      </section>
+
+      <section class="albums-section" id="albums">
+        <div class="wrap">
+          <div class="section-heading">
+            <div><p class="eyebrow">02 — ALBUM</p><h2>Setiap ide punya<br><em>ruangnya sendiri.</em></h2></div>
+            <button class="outline-button" type="button" data-action="add-album" data-owner-only hidden>+ Tambah album</button>
+          </div>
+          <div class="album-grid" id="album-grid"></div>
+          <p class="empty-state" id="album-empty" hidden>Belum ada album. Buat album pertamamu untuk mulai mengarsipkan karya.</p>
+        </div>
+      </section>
+
+      <section class="creators-section" id="creators">
+        <div class="wrap">
+          <div class="section-heading">
+            <div><p class="eyebrow">03 — KOMUNITAS</p><h2>Temukan ruang<br><em>kreator lain.</em></h2></div>
+            <label class="creator-search"><span aria-hidden="true">⌕</span><input id="creator-search" type="search" placeholder="Cari nama kreator..." aria-label="Cari kreator"></label>
+          </div>
+          <p class="creator-status" id="creator-status" role="status" aria-live="polite">Memuat kreator…</p>
+          <div class="social-tools" id="social-tools" hidden>
+            <div class="social-tabs" role="group" aria-label="Daftar sosial">
+              <button class="social-tab is-active" type="button" data-social-tab="creators" aria-pressed="true">Kreator</button>
+              <button class="social-tab" type="button" data-social-tab="following" aria-pressed="false">Following <span id="following-count">0</span></button>
+              <button class="social-tab" type="button" data-social-tab="followers" aria-pressed="false">Followers <span id="followers-count">0</span></button>
+            </div>
+            <button class="notification-button" id="open-notifications" type="button" aria-haspopup="dialog">Notifikasi <span id="notification-count" aria-label="Belum dibaca">0</span></button>
+          </div>
+          <p class="social-list-heading" id="social-list-heading" hidden></p>
+          <div class="social-list" id="social-list" hidden></div>
+          <div class="creator-grid" id="creator-grid"></div>
+        </div>
+      </section>
+
+      <section class="about-section" id="about">
+        <div class="wrap about-layout">
+          <p class="eyebrow">04 — TENTANG SAYA</p>
+          <div class="about-content">
+            <h2>Rasa ingin tahu<br>adalah <em>cara kerja.</em></h2>
+            <div class="profile-row" id="profile-row">
+                <img id="profile-picture" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=260&h=300&q=85" alt="Foto profil Muhamad Fadli Firmansyah" loading="lazy">
+                <div><strong id="profile-name">Muhamad Fadli Firmansyah</strong><span id="profile-role">Siswa · Desain Komunikasi Visual</span><span id="profile-school">SMKN 1 Kota Serang</span></div>
+            </div>
+            <div class="about-details" id="about-details"><p id="profile-bio">Saya Muhamad Fadli Firmansyah, siswa Desain Komunikasi Visual di SMKN 1 Kota Serang. Portfolio ini menjadi ruang untuk menyimpan karya dan proses belajar saya di bidang desain komunikasi visual.</p><div class="skill-tags" id="profile-interests"><span>Affinity</span><span>Fotografi</span><span>Editing</span><span>VS Code</span></div></div>
+            <div class="social-links" id="profile-social-links"><span>MENEMUKAN SAYA</span><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.behance.net/" target="_blank" rel="noopener noreferrer">Behance ↗</a><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+          </div>
+          <div class="about-symbol" aria-hidden="true"><span id="profile-initial">F</span><i>✳</i><small>SELALU DALAM PROSES</small></div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div class="wrap contact-inner">
+          <p class="eyebrow">05 — PUNYA IDE?</p>
+          <h2>Yuk, bikin sesuatu<br><em>yang berkesan.</em></h2>
+          <a class="contact-main" href="mailto:emailkamu@example.com?subject=Kolaborasi%20kreatif">Mulai percakapan <span>↗</span></a>
+          <p class="contact-note">Terbuka untuk obrolan dan kolaborasi baru.</p>
+          <div class="contact-links"><a href="mailto:emailkamu@example.com">Email</a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://wa.me/" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+        </div>
+        <span class="contact-watermark" aria-hidden="true">F.</span>
+      </section>
+    </main>
+
+    <footer class="site-footer wrap"><a class="wordmark" href="#home">myprtflioo<span>.</span></a><span>DIBUAT DENGAN PENUH PERHATIAN <b>✳</b></span><a href="#home">KEMBALI KE ATAS ↑</a></footer>
+
+    <dialog class="app-dialog" id="account-dialog">
+      <form class="dialog-form" id="account-form">
+        <div class="dialog-title"><div><p class="eyebrow">PORTFOLIO PRIBADI</p><h2 id="account-form-heading">Buat akun</h2></div><button class="close-button" type="button" data-close aria-label="Tutup">×</button></div>
+        <p class="account-status" id="account-status" role="status" aria-live="polite">Akun menyimpan portfolio agar dapat dibuka di perangkat lain.</p>
+        <div id="account-credentials">
+          <label>Email<input name="email" type="email" autocomplete="email" required></label>
+          <label>Kata sandi<input name="password" type="password" autocomplete="new-password" minlength="8" required></label>
+          <div class="form-actions account-actions"><button class="text-button" id="account-mode-toggle" type="button">Sudah punya akun? Masuk</button><button class="solid-button" id="account-submit" type="submit">Buat akun</button></div>
+        </div>
+        <button class="text-button account-signout" id="account-signout" type="button" hidden>Keluar dari akun</button>
+      </form>
+    </dialog>
+
+    <dialog class="app-dialog" id="album-dialog">
+      <form class="dialog-form" id="album-form">
+        <div class="dialog-title"><div><p class="eyebrow">KOLEKSI PORTFOLIO</p><h2 id="album-form-heading">Album baru</h2></div><button class="close-button" type="button" data-close aria-label="Tutup">×</button></div>
+        <input type="hidden" name="id">
+        <label>Nama album<input name="name" required maxlength="70" placeholder="Contoh: Desain Poster 2026"></label>
+        <label>Deskripsi<textarea name="description" rows="3" maxlength="240" placeholder="Ceritakan isi koleksi ini"></textarea></label>
+        <label>Kategori<input name="category" required maxlength="40" placeholder="Contoh: Desain Grafis"></label>
+        <label>Cover album<input name="coverFile" type="file" accept="image/*"><small>Cover akan dikompres otomatis. Kosongkan untuk memakai gambar karya pertama.</small></label>
+        <div class="form-actions"><button class="text-button" type="button" data-close>Batal</button><button class="solid-button" type="submit">Simpan album</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="app-dialog" id="work-dialog">
+      <form class="dialog-form" id="work-form">
+        <div class="dialog-title"><div><p class="eyebrow">ARSIP KARYA</p><h2 id="work-form-heading">Karya baru</h2></div><button class="close-button" type="button" data-close aria-label="Tutup">×</button></div>
+        <input type="hidden" name="id">
+        <label>Album<select name="albumId" required></select></label>
+        <label>Judul karya<input name="title" required maxlength="90" placeholder="Nama karya"></label>
+        <label>Deskripsi<textarea name="description" rows="3" maxlength="320" placeholder="Ceritakan konteks karya"></textarea></label>
+        <label>Gambar karya<input name="imageFile" type="file" accept="image/*"><small>Unggah JPG, PNG, atau WebP. Gambar dioptimalkan di browser.</small></label>
+        <div class="form-row"><label>Kategori<input name="category" required maxlength="40" placeholder="Poster"></label><label>Tahun<input name="year" type="number" min="1900" max="2100" required></label></div>
+        <label>Software / tools<input name="tools" maxlength="120" placeholder="Photoshop, Figma..."></label>
+        <label>Link project<input name="projectUrl" type="url" placeholder="https://..."></label>
+        <label>Link lainnya<input name="socialUrl" type="url" placeholder="Behance, Instagram, GitHub..."></label>
+        <label class="checkbox-label"><input name="featured" type="checkbox"> Tampilkan sebagai karya pilihan</label>
+        <div class="form-actions"><button class="text-button" type="button" data-close>Batal</button><button class="solid-button" type="submit">Simpan karya</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="app-dialog" id="profile-dialog">
+      <form class="dialog-form" id="profile-form">
+        <div class="dialog-title"><div><p class="eyebrow">PROFIL PEMILIK</p><h2>Edit profil</h2></div><button class="close-button" type="button" data-close aria-label="Tutup">×</button></div>
+        <label>Nama<input name="name" maxlength="80" placeholder="Nama yang ditampilkan"></label>
+        <label>Foto profil<input name="pictureFile" type="file" accept="image/*"><small>Foto dikompres otomatis hingga 600 px.</small></label>
+        <label class="checkbox-label" id="remove-profile-picture-row" hidden><input name="removePicture" type="checkbox"> Hapus foto profil saat ini</label>
+        <label>Bio<textarea name="bio" rows="4" maxlength="500" placeholder="Ceritakan sedikit tentang dirimu"></textarea></label>
+        <label>Minat<textarea name="interests" rows="3" maxlength="240" placeholder="Satu minat per baris atau pisahkan dengan koma"></textarea></label>
+        <div class="form-actions"><button class="text-button" type="button" data-close>Batal</button><button class="solid-button" type="submit">Simpan profil</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="app-dialog dashboard-dialog" id="dashboard-dialog">
+      <section class="dashboard-content">
+        <div class="dialog-title"><div><p class="eyebrow">RUANG KERJA</p><h2>Dashboard</h2></div><button class="close-button" type="button" data-close aria-label="Tutup">×</button></div>
+        <div class="dashboard-stats" id="dashboard-stats"></div>
+        <div class="dashboard-actions"><button class="solid-button" type="button" data-action="add-album" data-owner-only>+ Album</button><button class="outline-button" type="button" data-action="add-work" data-owner-only>+ Karya</button><button class="outline-button" type="button" data-action="edit-profile" data-owner-only>Edit profil</button></div>
+        <div class="manage-list" id="manage-list"></div>
+      </section>
+    </dialog>
+
+    <dialog class="app-dialog detail-dialog" id="detail-dialog"><div id="detail-content"></div></dialog>
+    <dialog class="app-dialog notifications-dialog" id="notifications-dialog">
+      <section class="dashboard-content">
+        <div class="dialog-title"><div><p class="eyebrow">AKTIVITAS AKUN</p><h2>Notifikasi</h2></div><button class="close-button" type="button" data-close aria-label="Tutup">×</button></div>
+        <p class="notification-status" id="notification-status" role="status" aria-live="polite"></p>
+        <div class="notification-list" id="notification-list"></div>
+      </section>
+    </dialog>
+  </body>
+</html>

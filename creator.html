@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10233d">
+    <meta name="description" content="Lihat profil dan karya kreator di myprtflioo.">
+    <title>Portfolio kreator — myprtflioo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js" defer></script>
+    <script src="creator.js" defer></script>
+  </head>
+  <body class="creator-page-body">
+    <header class="auth-header">
+      <a class="wordmark" href="index.html" aria-label="myprtflioo, kembali ke beranda">myprtflioo<span>.</span></a>
+      <a href="index.html#creators">← Kembali ke kreator</a>
+    </header>
+    <main class="creator-page wrap">
+      <p class="creator-page-status" id="creator-page-status" role="status" aria-live="polite">Memuat profil kreator…</p>
+      <section class="creator-profile" id="creator-profile" hidden>
+        <div class="creator-profile-avatar" id="creator-profile-avatar"></div>
+        <div class="creator-profile-copy">
+          <p class="eyebrow">PORTFOLIO KREATOR</p>
+          <h1 id="creator-name"></h1>
+          <p id="creator-bio"></p>
+          <div class="creator-interests" id="creator-interests"></div>
+          <div class="creator-profile-actions" id="creator-profile-actions"></div>
+        </div>
+        <div class="creator-profile-stats"><span><strong id="creator-work-count">00</strong>KARYA</span><span><strong id="creator-album-count">00</strong>ALBUM</span></div>
+      </section>
+      <section class="creator-portfolio-section" id="creator-portfolio" hidden>
+        <div class="creator-portfolio-heading"><h2>Karya <em>pilihan.</em></h2><label class="creator-album-filter">ALBUM <select id="creator-album-filter" aria-label="Filter karya menurut album"><option value="all">Semua album</option></select></label></div>
+        <div class="work-grid creator-work-grid" id="creator-work-grid"></div>
+        <p class="creator-page-empty" id="creator-work-empty" hidden>Belum ada karya untuk ditampilkan.</p>
+      </section>
+    </main>
+    <footer class="site-footer wrap"><a class="wordmark" href="index.html">myprtflioo<span>.</span></a><span>KARYA YANG DIBAGIKAN SECARA PUBLIK</span><a href="#top">KEMBALI KE ATAS ↑</a></footer>
+    <dialog class="app-dialog detail-dialog" id="creator-work-dialog"><div id="creator-work-detail"></div></dialog>
+  </body>
+</html>
